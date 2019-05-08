@@ -10,7 +10,15 @@ describe 'Document API' do
 		post 'encrypt string' do
 			tags 'String handling'
 			consumes 'application/json'
-			parameter name: :input, in: :body
+			parameter name: :input, in: :body, schema: {
+				type: :object,
+				properties: {
+					email: { type: :string },
+					'pubkey-id': { type: :string },
+					message: { type: :string }
+				},
+				required: [ 'email', 'pubkey-id', 'message' ]
+			}
 			response '200', 'success' do
 				let(:input) { {
 					"email": "christoph.fabianek@gmail.com",

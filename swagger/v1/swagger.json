@@ -25,7 +25,26 @@
         "parameters": [
           {
             "name": "input",
-            "in": "body"
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "pubkey-id": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "email",
+                "pubkey-id",
+                "message"
+              ]
+            }
           }
         ],
         "responses": {
