@@ -1,0 +1,4 @@
+.env
+.gitignore
+build.sh
+docker-compose.yaml
