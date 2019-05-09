@@ -33,18 +33,9 @@ module Api
             	usage_policy = params["usage-policy"].to_s
             	payment_method = params[:method].to_s
 
-            	puts "request: " + request_string
-            	puts "method: " + payment_method
-
             	cost = calc_price(request_string, usage_policy, payment_method)
 
-                puts "cost: " + cost.to_s
-
-            	retVal = {
-            		"price": cost.to_s
-            	}
-
-            	render json: retVal,
+            	render json: { "price": cost.to_s },
             		   status: 200
             end
         end

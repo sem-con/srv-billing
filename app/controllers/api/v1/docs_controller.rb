@@ -58,9 +58,9 @@ module Api
                 begin
                     data64 = params[:data]
                     data = Base64.decode64(data64)
-                    crypto = GPGME::Crypto.new(password: ENV["PASSPHRASE"])
-                    signature = crypto.sign(data, signer: ENV["EMAIL"], mode: GPGME::SIG_MODE_DETACH)
-                    render json: {"email": ENV["EMAIL"],
+                    crypto = GPGME::Crypto.new(password: ENV["PASSPHRASE"].to_s)
+                    signature = crypto.sign(data, signer: ENV["EMAIL"].to_s, mode: GPGME::SIG_MODE_DETACH)
+                    render json: {"email": ENV["EMAIL"].to_s,
                                   "signature": Base64.strict_encode64(signature.to_s)}, 
                            status: 200
 

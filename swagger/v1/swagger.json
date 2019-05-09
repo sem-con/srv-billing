@@ -17,7 +17,7 @@
       "post": {
         "summary": "encrypt string",
         "tags": [
-          "String handling"
+          "Cryptography"
         ],
         "consumes": [
           "application/json"
@@ -61,6 +61,261 @@
                 "cipher"
               ]
             }
+          }
+        }
+      }
+    },
+    "/api/decrypt": {
+      "post": {
+        "summary": "decrypt string",
+        "tags": [
+          "Cryptography"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "input",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "cipher": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "cipher"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "message"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/api/sign": {
+      "post": {
+        "summary": "sign string",
+        "tags": [
+          "Cryptography"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "input",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "data"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "signature": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "signature"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/api/verify": {
+      "post": {
+        "summary": "verify signature",
+        "tags": [
+          "Cryptography"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "input",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "pubkey-id": {
+                  "type": "string"
+                },
+                "original": {
+                  "type": "string"
+                },
+                "signature": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "cipher"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "valid": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "valid"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/api/payment_info": {
+      "get": {
+        "summary": "list general payment information",
+        "tags": [
+          "Payment"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "address": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "pubkey-id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "address",
+                "email",
+                "pubkey-id"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/api/price": {
+      "post": {
+        "summary": "calculate price for data",
+        "tags": [
+          "Payment"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "input",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "request": {
+                  "type": "string"
+                },
+                "usage-policy": {
+                  "type": "string"
+                },
+                "method": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "request",
+                "usage-policy",
+                "method"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "price": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "price"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/api/transaction?tx={transaction_hash}": {
+      "get": {
+        "summary": "access transaction information",
+        "tags": [
+          "Blockchain"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "transaction_hash",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
           }
         }
       }
