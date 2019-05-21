@@ -47,7 +47,7 @@ $ docker run -d --name srv-billing -v $PWD/key:/key --env-file .env semcon/srv-b
 ### Accessing the Service    
 Since the billing service holds sensitive information it is recommended to expose no ports and uses a private network between the Semantic Container and the Billing Service:    
 ```
-$ docker run -p 4000:3000 -d --name demo -e AUTH=billing --link srv-billing semcon/sc-base /bin/init.sh "$(< init_billing.trig)"
+$ docker run -p 4000:3000 -d --name demo -e AUTH=billing --link srv-billing semcon/sc-base /bin/init.sh "$(< init.trig)"
 ```    
 
 Please note that a Semantic Container expects to connect to the billing service via `http://srv-billing:3000` (as specified in `image-constraints.trig`). 
