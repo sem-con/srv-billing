@@ -18,7 +18,7 @@ RSpec.configure do |config|
       info: {
         title: 'Semantic Container Billing Service API',
         version: 'v1',
-        "description": "The billing service for Semantic Containers provides basic functions for selling data.\n \n Further information:\n - learn more about Semantic Containers at https://www.ownyourdata.eu/semcon\n - view other [OwnYourData Service API's](https://api-docs.ownyourdata.eu)",
+        "description": "The billing service for Semantic Containers provides basic functions for selling data.\n \n Further information:\n - detailed description on configuring the service on start up at https://github.com/sem-con/srv-billing\n - learn more about Semantic Containers at https://www.ownyourdata.eu/semcon\n - view other [OwnYourData Service API's](https://api-docs.ownyourdata.eu)",
         "contact": {
           "email": "office@ownyourdata.eu"
         },
