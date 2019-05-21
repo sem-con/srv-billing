@@ -1,6 +1,4 @@
-# srv-billing
-
-# <img src="https://github.com/sem-con/sc-seismic/raw/master/app/assets/images/oyd_green.png" width="60"> Billing Service    
+# <img src="https://github.com/sem-con/srv-billing/raw/master/app/assets/images/oyd_green.png" width="60"> Billing Service    
 This [Semantic Container](https://www.ownyourdata.eu/semcon) Service provides functionality and information to allow selling access to data.     
 
 Docker Image: https://hub.docker.com/r/semcon/srv-billing    
