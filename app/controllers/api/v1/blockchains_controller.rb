@@ -17,10 +17,40 @@ module Api
 
         		response = response["result"] rescue nil
         		if response.nil?
-        			render json: {"error": "failed to parse response"},
+        			render json: {"error": "failed to parse transaction response"},
         				   status: 500
         		    return
         		end
+
+                block = response["blockNumber"].to_i(16) rescue nil
+                if block.nil?
+                    render json: {"error": "failed to parse block"},
+                           status: 500
+                    return
+                end
+
+                query_url = "https://api.etherscan.io/api?module=block&action=getblockreward"
+                query_url += "&blockno=" + block.to_s 
+                query_url += "&apikey=" + ENV["ETHERSCAN_APIKEY"].to_s
+                block_response = HTTParty.get(query_url).parsed_response rescue nil
+                if block_response.nil?
+                    render json: {"error": "failed to query block"},
+                           status: 500
+                    return
+                end
+
+                block_response = block_response["result"] rescue nil
+                if block_response.nil?
+                    render json: {"error": "failed to parse block response"},
+                           status: 500
+                    return
+                end
+                ts = response["timeStamp"].to_i rescue nil
+                if ts.nil?
+                    render json: {"error": "failed to read timestamp"},
+                           status: 500
+                    return
+                end
 
                 if response["input"].to_s[0..1] == "0x"
                     input_string = response["input"].to_s
@@ -32,6 +62,7 @@ module Api
         		retVal = {
                     "from": response["from"].to_s,
                     "to": response["to"].to_s,
+                    "timestamp": ts.to_i,
         			"input": input_string,
         			"value": val
         		}.stringify_keys

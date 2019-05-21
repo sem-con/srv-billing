@@ -22,7 +22,11 @@ config/master.key
 # dotenv
 # TODO Comment out this rule if environment variables can be committed
 .env
-.env_rspec
+.env_passphrase_rspec
+.env_apikey_rspec
+.env_hdw
+.env_singleKey
+/test
 
 ## Environment normalization:
 /.bundle

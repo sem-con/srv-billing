@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 			match 'sign',    to: 'docs#sign',    via: 'post'
 			match 'verify',  to: 'docs#verify',  via: 'post'
 
-			match 'payment_info', to: 'payments#info',  via: 'get'
-			match 'price',        to: 'payments#price', via: 'post'
+			match 'payment_info',  to: 'payments#info',  via: 'get'
+			match 'payment_terms', to: 'payments#terms', via: 'post'
 
 			match 'transaction', to: 'blockchains#transaction', via: 'get'
 		end

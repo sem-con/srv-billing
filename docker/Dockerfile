@@ -54,7 +54,8 @@ RUN gem update --system && \
 	gem install bundler && \
 	bundle install && \
 	bundle update --bundler && \
-	npm install web3
+	npm install web3 && \
+	npm i --save hdkey
 
 COPY . .
 

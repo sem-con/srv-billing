@@ -1,7 +1,8 @@
 # spec/integration/docs_spec.rb
 # rake rswag:specs:swaggerize
 
-ENV["PASSPHRASE"] = File.read(".env_rspec")
+ENV["PASSPHRASE"] = File.read(".env_passphrase_rspec")
+ENV["ETHERSCAN_APIKEY"] = File.read(".env_apikey_rspec")
 
 require 'swagger_helper'
 
@@ -143,7 +144,7 @@ describe 'Payment API' do
 		end
 	end
 
-	path '/api/price' do 
+	path '/api/payment_terms' do 
 		post 'calculate price for data' do 
 			tags 'Payment'
 			consumes 'application/json'
