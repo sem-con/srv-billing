@@ -46,7 +46,7 @@ module Api
 
             	render json: { "valid": valid,
                                "price": cost.to_s,
-                               "duration": duration.to_i, 
+                               "offer-end": duration.to_i, 
                                "offer-info": info.to_s },
             		   status: 200
             end
