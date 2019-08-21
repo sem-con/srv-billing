@@ -54,6 +54,12 @@ Please note that a Semantic Container expects to connect to the billing service 
 
 See the [Github sc-tawes repository](https://github.com/sem-con/sc-tawes) for an example on using the Billing Service.
 
+### Adapting for Use Case
+To adapt the billing service to invidivual needs change in the `PriceHelper` module the function `calc_price` and return based on request options, usage policy, and payment method:    
+* validity of a buying request (boolean)
+* date and time until offer is valid (timestamp)
+* cost for a specific request (float)
+* additional free text information (string)
 
 ## Improve this Semantic Container Service    
 
